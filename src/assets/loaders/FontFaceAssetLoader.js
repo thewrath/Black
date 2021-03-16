@@ -72,18 +72,20 @@ export class FontFaceAssetLoader extends AssetLoader {
      * @type {number} 
      */
     this.mDefaultFontWidth = this.mTestingElement.offsetWidth;
-    this.mTestingElement.style.fontFamily = name + ',' + this.mTestingFontName;
+    this.mTestingElement.style.fontFamily = '"' + name + '",' + this.mTestingFontName;
 
     /** 
      * @private 
      * @type {number} 
      */
     this.mTimeoutHandle = -1;
+
+    
   }
 
   load() {
     if (this.mIsLocal)
-      this.mLoaderElement.innerHTML += (`\n @font-face {font-family: ${this.mName}; src: url(${this.mUrl});}`);
+      this.mLoaderElement.innerHTML += (`\n @font-face {font-family: "${this.mName}"; src: url(${this.mUrl});}`);
     else
       this.mLoaderElement.href = this.mUrl;
 
